@@ -240,7 +240,7 @@ NSInteger const MZFayeClientDefaultMaximumAttempts = 5;
 
     NSDictionary *extension = self.channelExtensions[channel];
     if (extension) {
-        [message setObject:extension forKey:MZFayeClientBayeuxMessageExtensionKey];
+        message[MZFayeClientBayeuxMessageExtensionKey] = extension;
     }
 
     [self writeMessageToWebSocket:[message copy]];
@@ -287,11 +287,11 @@ NSInteger const MZFayeClientDefaultMaximumAttempts = 5;
                                       } mutableCopy];
 
     if (extension) {
-        [message setObject:extension forKey:MZFayeClientBayeuxMessageExtensionKey];
+        message[MZFayeClientBayeuxMessageExtensionKey] = extension;
     } else {
         NSDictionary *extensionForChannel = self.channelExtensions[channel];
         if (extensionForChannel) {
-            [message setObject:extensionForChannel forKey:MZFayeClientBayeuxMessageExtensionKey];
+            message[MZFayeClientBayeuxMessageExtensionKey] = extensionForChannel;
         }
     }
 
@@ -311,14 +311,14 @@ NSInteger const MZFayeClientDefaultMaximumAttempts = 5;
 {
     self.sentMessageCount++;
 
-    return [[NSString stringWithFormat:@"%d",self.sentMessageCount] base64String];
+    return [[NSString stringWithFormat:@"%lld", (long long)self.sentMessageCount] base64String];
 }
 
 #pragma mark - Public methods
 
 - (void)setExtension:(NSDictionary *)extension forChannel:(NSString *)channel
 {
-    [self.channelExtensions setObject:extension forKey:channel];
+    (self.channelExtensions)[channel] = extension;
 }
 - (void)removeExtensionForChannel:(NSString *)channel
 {
@@ -376,9 +376,9 @@ NSInteger const MZFayeClientDefaultMaximumAttempts = 5;
     }
 
     if (subscriptionHandler) {
-        [self.subscribedChannels setObject:subscriptionHandler forKey:channel];
+        (self.subscribedChannels)[channel] = subscriptionHandler;
     } else {
-        [self.subscribedChannels setObject:[NSNull null] forKey:channel];
+        (self.subscribedChannels)[channel] = [NSNull null];
     }
 
     if (self.isConnected) {

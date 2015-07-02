@@ -21,6 +21,8 @@
 		062344B418592B2F0052DB3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0623449618592B2F0052DB3E /* UIKit.framework */; };
 		062344BC18592B2F0052DB3E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 062344BA18592B2F0052DB3E /* InfoPlist.strings */; };
 		062344BE18592B2F0052DB3E /* MZFayeClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 062344BD18592B2F0052DB3E /* MZFayeClientTests.m */; };
+		69F18EA31B45FA3700B63532 /* MZFayeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F18EA01B45FA3700B63532 /* MZFayeClient.m */; };
+		69F18EA41B45FA3700B63532 /* MZFayeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F18EA21B45FA3700B63532 /* MZFayeMessage.m */; };
 		E00C7DE5D741401BB50E0A39 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15FC3517F64F34939D2995 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +56,13 @@
 		062344B918592B2F0052DB3E /* MZFayeClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MZFayeClientTests-Info.plist"; sourceTree = "<group>"; };
 		062344BB18592B2F0052DB3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		062344BD18592B2F0052DB3E /* MZFayeClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZFayeClientTests.m; sourceTree = "<group>"; };
-		3E133F42E01E4D6D80C19CB0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		69F18E9F1B45FA3700B63532 /* MZFayeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFayeClient.h; path = ../MZFayeClient/MZFayeClient.h; sourceTree = "<group>"; };
+		69F18EA01B45FA3700B63532 /* MZFayeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFayeClient.m; path = ../MZFayeClient/MZFayeClient.m; sourceTree = "<group>"; };
+		69F18EA11B45FA3700B63532 /* MZFayeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFayeMessage.h; path = ../MZFayeClient/MZFayeMessage.h; sourceTree = "<group>"; };
+		69F18EA21B45FA3700B63532 /* MZFayeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFayeMessage.m; path = ../MZFayeClient/MZFayeMessage.m; sourceTree = "<group>"; };
 		6A15FC3517F64F34939D2995 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5816C0F25FF3F0E0134A3C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		EB07F7354D4C0E289E02B19B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,11 +93,15 @@
 		0623448618592B2F0052DB3E = {
 			isa = PBXGroup;
 			children = (
+				69F18E9F1B45FA3700B63532 /* MZFayeClient.h */,
+				69F18EA01B45FA3700B63532 /* MZFayeClient.m */,
+				69F18EA11B45FA3700B63532 /* MZFayeMessage.h */,
+				69F18EA21B45FA3700B63532 /* MZFayeMessage.m */,
 				0623449818592B2F0052DB3E /* MZFayeClient */,
 				062344B718592B2F0052DB3E /* MZFayeClientTests */,
 				0623449118592B2F0052DB3E /* Frameworks */,
 				0623449018592B2F0052DB3E /* Products */,
-				3E133F42E01E4D6D80C19CB0 /* Pods.xcconfig */,
+				89EACCBFDECCDD6B98287D97 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +167,15 @@
 				062344BA18592B2F0052DB3E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89EACCBFDECCDD6B98287D97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB07F7354D4C0E289E02B19B /* Pods.debug.xcconfig */,
+				BF5816C0F25FF3F0E0134A3C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +301,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -291,8 +311,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69F18EA31B45FA3700B63532 /* MZFayeClient.m in Sources */,
 				062344A918592B2F0052DB3E /* MZViewController.m in Sources */,
 				0623449F18592B2F0052DB3E /* main.m in Sources */,
+				69F18EA41B45FA3700B63532 /* MZFayeMessage.m in Sources */,
 				062344A318592B2F0052DB3E /* MZAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,7 +439,7 @@
 		};
 		062344C218592B2F0052DB3E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E133F42E01E4D6D80C19CB0 /* Pods.xcconfig */;
+			baseConfigurationReference = EB07F7354D4C0E289E02B19B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -432,7 +454,7 @@
 		};
 		062344C318592B2F0052DB3E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E133F42E01E4D6D80C19CB0 /* Pods.xcconfig */;
+			baseConfigurationReference = BF5816C0F25FF3F0E0134A3C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
