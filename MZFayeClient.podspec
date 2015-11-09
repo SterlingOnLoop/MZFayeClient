@@ -12,8 +12,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/SterlingOnLoop/MZFayeClient.git", :commit => "head" }
   
   s.source_files = 'MZFayeClient/*.{h,m}'
-  
-s.dependency 'SocketRocket', :git => "https://github.com/SterlingOnLoop/SocketRocket.git"
+
   s.dependency 'Base64', '~> 1.0.1'
   
   s.platform     = :ios, '7.0'
