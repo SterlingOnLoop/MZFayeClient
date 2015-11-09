@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MZFayeClient"
-  s.version      = "1.0.1"
+  s.version      = "1.0.1-Sterling"
   s.summary      = "Faye Client for iOS. Supports subscription blocks."
 
   s.homepage     = "https://github.com/m1entus/MZFayeClient"
